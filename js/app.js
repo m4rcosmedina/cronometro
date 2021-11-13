@@ -1,20 +1,10 @@
-/*
-let numero = 5;
-
-
-let lanzamiento = setInterval(()=>{
-    console.log ('lanzamiento en'+ numero + 'segundos');
-    numero-- ;
-    if (numero == 0){
-        clearInterval(lanzamiento);
-    }
-
-},1000);
-*/
 
 let cuentaHora = 00;
 let cuentaMinutos = 00;
 let cuentaSegundos = 00;
+
+let boton = document.getElementById('start');
+boton.disabled = false
 
 let segundos = document.querySelector('#segundos');
 let minutos = document.querySelector('#minutos');
@@ -35,6 +25,10 @@ function playReloj() {
             cuentaSegundos = "0" + cuentaSegundos;
         }
 
+        if(cuentaSegundos > 00 ){
+            boton.disabled = true
+        } 
+
         segundos.innerHTML = cuentaSegundos;
         cuentaSegundos++;
         minutos.innerHTML = cuentaMinutos;
@@ -46,6 +40,8 @@ function resetReloj() {
       cuentaSegundos = 00;
       cuentaMinutos = 00;
       cuentaHora = 00;
+      boton.disabled = false;
+      window.clearInterval(contador);
   }
    segundos.innerHTML = cuentaSegundos;
    minutos.innerHTML = cuentaMinutos;
@@ -54,5 +50,9 @@ function resetReloj() {
 }
 function stopReloj() {
     window.clearInterval(contador);
+    boton.disabled = false;
 }
+
+
+
 
